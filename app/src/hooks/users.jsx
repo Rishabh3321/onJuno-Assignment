@@ -7,14 +7,14 @@ import React, { useState } from "react";
 // Email
 // Position
 
-//      id,
-//     firstName,
-//     middleName,
-//     lastName,
-//     dob,
-//     country,
-//     email,
-//     position,
+//  id,
+// firstName,
+// middleName,
+// lastName,
+// dob,
+// country,
+// email,
+// position,
 
 const usersData = [
   {

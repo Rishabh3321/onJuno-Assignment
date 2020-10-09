@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 2rem;
+}
+h1 {
+  font-size: 48px;
+  margin: 1.2rem 0;
+  background: linear-gradient(rgb(101, 178, 214), rgb(42, 17, 204));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.link {
+  font-size: 1.6rem;
+  margin: 1rem;
+  color: rgb(42 17 204);
+  text-decoration: none;
+}

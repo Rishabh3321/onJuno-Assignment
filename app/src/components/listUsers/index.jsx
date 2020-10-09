@@ -30,7 +30,7 @@ const ListUsers = () => {
           <td>{firstName || " - "}</td>
           <td>{middleName || " - "}</td>
           <td>{lastName || " - "}</td>
-          <td>{dob.toISOString() || " - "}</td>
+          <td>{dob.toJSON().slice(0, 10) || " - "}</td>
           <td>{country || " - "}</td>
           <td>{email || " - "}</td>
           <td>{position || " - "}</td>

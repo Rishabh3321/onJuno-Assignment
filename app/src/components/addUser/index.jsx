@@ -75,7 +75,7 @@ const AddUser = () => {
           <input type="email" name="email" onChange={onDetailsChange}></input>
         </div>
         <div className="input-group">
-          <label for="country">Country</label>
+          <label htmlFor="country">Country</label>
           <select
             id="country"
             name="country"

@@ -62,7 +62,8 @@ export const Provider = ({ children }) => {
   };
 
   const deleteUser = (id) => {
-    const updatedUsers = users.map((user) => user.id !== id);
+    const updatedUsers = users.filter((user) => user.id !== id);
+    console.log(updatedUsers);
     setUsers(updatedUsers);
   };
 

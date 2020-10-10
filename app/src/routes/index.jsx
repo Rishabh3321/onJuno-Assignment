@@ -11,7 +11,7 @@ const Routes = () => {
       <Layout>
         <Route path="/" exact component={ListUsers} />
         <Route path="/add" exact component={AddUser} />
-        <Route path="/edit" exact component={EditUser} />
+        <Route path="/edit/:id" exact component={EditUser} />
       </Layout>
     </Switch>
   );

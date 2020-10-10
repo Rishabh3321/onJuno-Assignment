@@ -1,14 +1,24 @@
 import React, { useContext } from "react";
 import { details, userContext } from "../../hooks/users";
+import { useHistory } from "react-router-dom";
+
 import "./style.css";
 
 const ListUsers = () => {
-  const { users } = useContext(userContext);
+  const { users, deleteUser } = useContext(userContext);
+  const history = useHistory();
 
   const renderTableHeader = () => {
     return details.map((key, index) => {
       return <th key={index}>{key.toUpperCase()}</th>;
     });
+  };
+
+  const onDelete = (id) => {
+    const res = window.confirm("Do you realy want to delete this contact");
+    if (res) {
+      deleteUser(id);
+    }
   };
 
   const renderTableData = () => {
@@ -22,7 +32,8 @@ const ListUsers = () => {
         country,
         email,
         position,
-      } = user; //destructuring
+      } = user;
+      console.log(user, `--------${id}-------`);
       return (
         <tr key={id}>
           <td>{index + 1}</td>
@@ -33,6 +44,20 @@ const ListUsers = () => {
           <td>{country || " - "}</td>
           <td>{email || " - "}</td>
           <td>{position || " - "}</td>
+          <td>
+            <i
+              className="fas fa-user-edit"
+              onClick={() => history.push(`/edit/${index}`)}
+            ></i>
+          </td>
+          <td>
+            <i
+              className="fas fa-user-slash"
+              onClick={() => {
+                onDelete(id);
+              }}
+            ></i>
+          </td>
         </tr>
       );
     });

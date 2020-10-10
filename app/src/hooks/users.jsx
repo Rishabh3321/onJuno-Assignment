@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // First Name
 // Middle Name
 // Last Name
@@ -16,6 +16,8 @@ export const details = [
   "country",
   "email",
   "position",
+  "edit",
+  "delete",
 ];
 
 const usersData = [
@@ -44,7 +46,7 @@ const usersData = [
 export const userContext = React.createContext();
 
 export const Provider = ({ children }) => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(usersData);
 
   const addUser = (newUser) => {
     let updatedUsers = users;

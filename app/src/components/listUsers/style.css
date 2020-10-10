@@ -96,4 +96,10 @@ th {
   td:nth-of-type(8):before {
     content: "Position";
   }
+  td:nth-of-type(9):before {
+    content: "Edit";
+  }
+  td:nth-of-type(10):before {
+    content: "Delete";
+  }
 }

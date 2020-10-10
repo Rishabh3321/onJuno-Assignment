@@ -1,26 +1,36 @@
 import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import DatePicker from "react-datepicker";
 import { userContext } from "../../hooks/users";
 import { useHistory } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css";
+import "./style.css";
+
 const AddUser = () => {
   const [user, setUser] = useState({
     id: uuidv4(),
     firstName: "",
     middleName: "",
     lastName: "",
-    dob: new Date(),
-    country: "",
+    country: "India",
     email: "",
     position: "",
   });
+  const [startDate, setStartDate] = useState(new Date());
 
   const { addUser } = useContext(userContext);
   const history = useHistory();
 
   const onAdduser = (e) => {
     e.preventDefault();
-    addUser(user);
-    setTimeout(() => history.push("/"), 300);
+    let updatedUser = user;
+    updatedUser["dob"] = startDate;
+    if (user.firstName === "" && user.lastName === "" && user.middleName === "")
+      window.alert("Atleast fill the name");
+    else {
+      addUser(updatedUser);
+      setTimeout(() => history.push("/"), 300);
+    }
   };
 
   const onDetailsChange = (e) => {
@@ -29,7 +39,7 @@ const AddUser = () => {
     setUser(updatedUser);
   };
   return (
-    <div>
+    <div className="container">
       <form onSubmit={onAdduser}>
         <div className="input-group">
           <label>First Name</label>
@@ -53,21 +63,38 @@ const AddUser = () => {
         </div>
         <div className="input-group">
           <label>DOB</label>
-          <input type="text" name="dob"></input>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            showMonthDropdown
+            showYearDropdown
+          />
         </div>
         <div className="input-group">
           <label>Email</label>
-          <input type="text" name="email" onChange={onDetailsChange}></input>
+          <input type="email" name="email" onChange={onDetailsChange}></input>
         </div>
         <div className="input-group">
-          <label>Country</label>
-          <input type="text" name="country" onChange={onDetailsChange}></input>
+          <label for="country">Country</label>
+          <select
+            id="country"
+            name="country"
+            onChange={onDetailsChange}
+            defaultChecked="india"
+          >
+            <option value="=india">INDIA</option>
+            <option value="usa">USA</option>
+            <option value="australia">Australia</option>
+            <option value="uk">UK</option>
+          </select>
         </div>
         <div className="input-group">
           <label>Position</label>
           <input type="text" name="position" onChange={onDetailsChange}></input>
         </div>
-        <input type="submit" value="Submit" />
+        <div className="center">
+          <input type="submit" value="Add User" />
+        </div>
       </form>
     </div>
   );

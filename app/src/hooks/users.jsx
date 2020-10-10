@@ -7,14 +7,16 @@ import React, { useEffect, useState } from "react";
 // Email
 // Position
 
-//  id,
-// firstName,
-// middleName,
-// lastName,
-// dob,
-// country,
-// email,
-// position,
+export const details = [
+  "id",
+  "firstName",
+  "middleName",
+  "lastName",
+  "dob",
+  "country",
+  "email",
+  "position",
+];
 
 const usersData = [
   {
@@ -42,13 +44,11 @@ const usersData = [
 export const userContext = React.createContext();
 
 export const Provider = ({ children }) => {
-  const [users, setUsers] = useState(usersData);
+  const [users, setUsers] = useState([]);
 
   const addUser = (newUser) => {
-    console.log(users);
     let updatedUsers = users;
     updatedUsers.push(newUser);
-    console.log(updatedUsers);
     setUsers(updatedUsers);
   };
 
@@ -63,8 +63,6 @@ export const Provider = ({ children }) => {
     const updatedUsers = users.map((user) => user.id !== id);
     setUsers(updatedUsers);
   };
-
-  useEffect(() => console.log(users));
 
   return (
     <userContext.Provider value={{ users, addUser, updateUser, deleteUser }}>

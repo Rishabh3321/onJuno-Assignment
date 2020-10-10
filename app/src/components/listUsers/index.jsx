@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
-import { userContext } from "../../hooks/users";
+import { details, userContext } from "../../hooks/users";
 import "./style.css";
 
 const ListUsers = () => {
   const { users } = useContext(userContext);
 
   const renderTableHeader = () => {
-    console.log(users[0], "<---");
-    let header = Object.keys(users[0]);
-    return header.map((key, index) => {
+    return details.map((key, index) => {
       return <th key={index}>{key.toUpperCase()}</th>;
     });
   };

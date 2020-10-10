@@ -33,7 +33,6 @@ const ListUsers = () => {
         email,
         position,
       } = user;
-      console.log(user, `--------${id}-------`);
       return (
         <tr key={id}>
           <td>{index + 1}</td>

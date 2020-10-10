@@ -8,9 +8,11 @@ const Header = () => {
       <h1>ColleaguesDB</h1>
       <div>
         <Link className="link" to="/">
+          <i class="fas fa-home"></i>
           Home
         </Link>
         <Link className="link" to="/add">
+          <i class="fas fa-user-plus"></i>
           Add
         </Link>
       </div>

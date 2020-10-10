@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // First Name
 // Middle Name
 // Last Name
@@ -44,7 +44,13 @@ export const userContext = React.createContext();
 export const Provider = ({ children }) => {
   const [users, setUsers] = useState(usersData);
 
-  const addUsers = (newUser) => setUsers(...users, newUser);
+  const addUser = (newUser) => {
+    console.log(users);
+    let updatedUsers = users;
+    updatedUsers.push(newUser);
+    console.log(updatedUsers);
+    setUsers(updatedUsers);
+  };
 
   const updateUser = (updatedUser) => {
     const updatedUsers = users.map((user) =>
@@ -58,8 +64,10 @@ export const Provider = ({ children }) => {
     setUsers(updatedUsers);
   };
 
+  useEffect(() => console.log(users));
+
   return (
-    <userContext.Provider value={{ users, addUsers, updateUser, deleteUser }}>
+    <userContext.Provider value={{ users, addUser, updateUser, deleteUser }}>
       {children}
     </userContext.Provider>
   );

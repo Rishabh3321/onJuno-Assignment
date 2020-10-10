@@ -6,6 +6,7 @@ const ListUsers = () => {
   const { users } = useContext(userContext);
 
   const renderTableHeader = () => {
+    console.log(users[0], "<---");
     let header = Object.keys(users[0]);
     return header.map((key, index) => {
       return <th key={index}>{key.toUpperCase()}</th>;
@@ -40,14 +41,16 @@ const ListUsers = () => {
   };
 
   return (
-    <div>
-      <table className="users">
-        <tbody>
-          <tr>{renderTableHeader()}</tr>
-          {renderTableData()}
-        </tbody>
-      </table>
-    </div>
+    users && (
+      <div>
+        <table className="users">
+          <tbody>
+            <tr>{renderTableHeader()}</tr>
+            {renderTableData()}
+          </tbody>
+        </table>
+      </div>
+    )
   );
 };
 
